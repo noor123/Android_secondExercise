@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:weightSum="90">
+
+    <Button
+        android:id="@+id/save_value"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="30"
+        android:text="save value"/>
+
+    <Button
+        android:id="@+id/retrieve_value"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="30"
+        android:text="retrieve value"/>
+
+    <Button
+        android:id="@+id/clear_value_in_memory"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="30"
+        android:text="clear value in memory"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/text_to_save"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/green"
+        android:hint="Fill in a value"
+        android:gravity="center"/>
+
+</LinearLayout>

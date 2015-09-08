@@ -1,41 +1,54 @@
 package com.example.jeansmits.jsonexercise.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.jeansmits.jsonexercise.R;
-import com.example.jeansmits.jsonexercise.models.Movie;
 
-public class DetailPageMoviesActivity extends AppCompatActivity {
-    Movie movie;
+public class SaveSomethingActivity extends AppCompatActivity implements View.OnClickListener {
+    Button saveValue;
+    Button retrieveValue;
+    Button clearValue;
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detailpage_movies);
+        setContentView(R.layout.save_something);
 
-        TextView title = (TextView) findViewById(R.id.detail_title);
-        TextView length = (TextView) findViewById(R.id.detail_length);
-        TextView rating = (TextView) findViewById(R.id.detail_rating);
-        TextView description = (TextView) findViewById(R.id.detail_description);
+        saveValue = (Button) findViewById(R.id.save_value);
+        saveValue.setOnClickListener(this);
+        retrieveValue = (Button) findViewById(R.id.retrieve_value);
+        retrieveValue.setOnClickListener(this);
+        clearValue = (Button) findViewById(R.id.clear_value_in_memory);
+        clearValue.setOnClickListener(this);
 
-        String g_id = getIntent().getStringExtra("movie_id");
-        String g_title = getIntent().getStringExtra("movie_title");
-        int g_length = getIntent().getIntExtra("movie_length", 1);
-        double g_rating = getIntent().getDoubleExtra("movie_rating", 0.00);
-        String g_description = getIntent().getStringExtra("movie_description");
+        pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        editor = pref.edit();
+    }
 
-        title.setText(g_title);
-        length.setText("Length: " + Integer.toString(g_length) + " minutes");
-        rating.setText("Rating: " + Double.toString(g_rating) + "/10");
-        description.setText("Description: " + g_description);
-
+    @Override
+    public void onClick(View v) {
+        EditText textUserGaveIn = (EditText) findViewById(R.id.text_to_save);
+        if (v == saveValue) {
+            editor.putString("valueOfUser", textUserGaveIn.getText().toString());
+            editor.commit();
+        } else if (v == retrieveValue) {
+            textUserGaveIn.setText(pref.getString("valueOfUser", null));
+        } else if (v == clearValue) {
+            editor.remove("valueOfUser");
+            editor.commit();
+        }
     }
 
     @Override
@@ -62,6 +75,5 @@ public class DetailPageMoviesActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }
