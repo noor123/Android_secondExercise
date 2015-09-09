@@ -8,11 +8,67 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="center"
-        android:text="Take a picture"/>
+        android:text="Take a picture" />
+
+    <Button
+        android:id="@+id/go_to_list_photos"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:text="See all your pictures" />
 
     <ImageView
         android:id="@+id/photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <EditText
+            android:id="@+id/name_image"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:hint="Give in a name"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/save_image"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="50"
+            android:text="Save"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/delete_photo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:layout_gravity="center"
+            android:text="Delete"
+            android:visibility="invisible"  />
+
+    </LinearLayout>
 
 </LinearLayout>

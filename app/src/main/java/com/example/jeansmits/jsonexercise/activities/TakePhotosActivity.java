@@ -12,15 +12,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 import com.example.jeansmits.jsonexercise.R;
+import android.widget.Toast;
 
 import java.io.File;
 
 public class TakePhotosActivity extends AppCompatActivity implements View.OnClickListener {
+    File fileDirectory;
     Button takePhoto;
-    File fileSaved;
+    EditText namePhoto;
+    Button savePhoto;
+    File fileWithPhoto;
+    Button deletePhoto;
+    Button gotoListPhotos;
+                    // Op andere pagina drop-down box met images en dan één image eronder.
     private static final String TAG = "MyActivity";
 
     @Override
@@ -30,10 +38,18 @@ public class TakePhotosActivity extends AppCompatActivity implements View.OnClic
 
         takePhoto = (Button) findViewById(R.id.take_photo);
         takePhoto.setOnClickListener(this);
+        deletePhoto = (Button) findViewById(R.id.delete_photo);
+        deletePhoto.setOnClickListener(this);
+        gotoListPhotos = (Button) findViewById(R.id.go_to_list_photos);
+        gotoListPhotos.setOnClickListener(this);
+        savePhoto = (Button) findViewById(R.id.save_image);
+        savePhoto.setOnClickListener(this);
+        namePhoto = (EditText) findViewById(R.id.name_image);
+
         boolean ExternalStorageAccessible = isExternalStorageWritable();
         if (ExternalStorageAccessible) {
-            File fileDirectory = makeAlbumStorageDir("photos");
-            fileSaved = new File(fileDirectory, "photosTakenByUser.jpg");
+            fileDirectory = makeAlbumStorageDir("photos");
+            fileWithPhoto = new File(fileDirectory, "photosTakenByUser.jpg");
         }
     }
 
@@ -64,26 +80,38 @@ public class TakePhotosActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(fileSaved));
-        startActivityForResult(i, 0);
+        if (v == takePhoto) {
+            Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(fileWithPhoto));
+            startActivityForResult(i, 0);
+            namePhoto.setText("");
+        } else if (v == deletePhoto) {
+            fileWithPhoto.delete();
+            ImageView showPhoto = (ImageView) findViewById(R.id.photo);
+            showPhoto.setVisibility(View.INVISIBLE);
+            deletePhoto.setVisibility(View.INVISIBLE);
+        } else if (v == gotoListPhotos) {
+            Intent intent = new Intent(this, ListOfPicturesActivity.class);
+            startActivity(intent);
+        } else if (v == savePhoto) {
+            File f = new File(fileDirectory, namePhoto.getText().toString() + ".jpg");
+            fileWithPhoto.renameTo(f);
+        }
+
     }
 
-//    @Override
-//    public void onActivityResult() {
-//        ImageView showPhoto = (ImageView) findViewById(R.id.photo);
-//        Picasso.with(this).load("File://" + fileSaved.getAbsolutePath()).into(showPhoto);
-//
-//
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        ImageView showPhoto = (ImageView) findViewById(R.id.photo);
+        Picasso.with(this).load("file://" + fileWithPhoto.getAbsolutePath()).into(showPhoto);
+        deletePhoto.setVisibility(View.VISIBLE);
+        gotoListPhotos.setVisibility(View.VISIBLE);
+        savePhoto.setVisibility(View.VISIBLE);
+        namePhoto.setVisibility(View.VISIBLE);
+        takePhoto.setText("Take another picture");
     }
-//        // catch IOException voor als er niet genoeg ruimte is om de foto op te slaan
-//        // delete files met myFile.delete();
-//
-//    }
 
     private boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
@@ -101,6 +129,10 @@ public class TakePhotosActivity extends AppCompatActivity implements View.OnClic
             Log.e(TAG, "Directory not created");
         }
         return file;
+    }
+
+    private void toastMessage (String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
 
