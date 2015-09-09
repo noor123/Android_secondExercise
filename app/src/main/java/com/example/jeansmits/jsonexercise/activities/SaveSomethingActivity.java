@@ -1,6 +1,5 @@
 package com.example.jeansmits.jsonexercise.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.jeansmits.jsonexercise.R;
 
@@ -54,7 +52,7 @@ public class SaveSomethingActivity extends AppCompatActivity implements View.OnC
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_json_exercise, menu);
+        getMenuInflater().inflate(R.menu.menu_except_shared_preferences, menu);
         return true;
     }
 
@@ -66,11 +64,11 @@ public class SaveSomethingActivity extends AppCompatActivity implements View.OnC
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.saveSomething) {
-            Intent intent = new Intent(this, SaveSomethingActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.overviewMovies) {
+        if (id == R.id.overview_movies) {
             Intent intent = new Intent(this, ListOfMoviesActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.take_photos) {
+            Intent intent = new Intent(this, TakePhotosActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

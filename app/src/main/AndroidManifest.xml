@@ -28,6 +28,10 @@
             android:name=".activities.SaveSomethingActivity"
             android:label="JsonExercise" >
         </activity>
+        <activity
+            android:name=".activities.TakePhotosActivity"
+            android:label="JsonExercise" >
+        </activity>
     </application>
 
 </manifest>

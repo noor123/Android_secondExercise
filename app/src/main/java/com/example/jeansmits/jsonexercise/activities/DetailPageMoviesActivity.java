@@ -3,10 +3,8 @@ package com.example.jeansmits.jsonexercise.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.jeansmits.jsonexercise.R;
@@ -38,10 +36,11 @@ public class DetailPageMoviesActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_json_exercise, menu);
+        getMenuInflater().inflate(R.menu.menu_all, menu);
         return true;
     }
 
@@ -53,11 +52,14 @@ public class DetailPageMoviesActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.saveSomething) {
+        if (id == R.id.overview_movies) {
+            Intent intent = new Intent(this, ListOfMoviesActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.save_something) {
             Intent intent = new Intent(this, SaveSomethingActivity.class);
             startActivity(intent);
-        } else if (id == R.id.overviewMovies) {
-            Intent intent = new Intent(this, ListOfMoviesActivity.class);
+        } else if (id == R.id.take_photos) {
+            Intent intent = new Intent(this, TakePhotosActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

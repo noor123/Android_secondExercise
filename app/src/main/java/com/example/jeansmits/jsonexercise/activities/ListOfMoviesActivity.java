@@ -76,7 +76,7 @@ public class ListOfMoviesActivity extends AppCompatActivity implements View.OnCl
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_json_exercise, menu);
+        getMenuInflater().inflate(R.menu.menu_except_all_movies, menu);
         return true;
     }
 
@@ -88,11 +88,11 @@ public class ListOfMoviesActivity extends AppCompatActivity implements View.OnCl
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.saveSomething) {
+        if (id == R.id.save_something) {
             Intent intent = new Intent(this, SaveSomethingActivity.class);
             startActivity(intent);
-        } else if (id == R.id.overviewMovies) {
-            Intent intent = new Intent(this, ListOfMoviesActivity.class);
+        } else if (id == R.id.take_photos) {
+            Intent intent = new Intent(this, TakePhotosActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
