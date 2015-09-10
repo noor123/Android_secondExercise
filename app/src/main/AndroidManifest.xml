@@ -36,6 +36,10 @@
             android:name=".activities.ListOfPicturesActivity"
             android:label="JsonExercise" >
         </activity>
+        <activity
+            android:name=".activities.SaveInDatabaseActivity"
+            android:label="JsonExercise" >
+        </activity>
     </application>
 
 </manifest>

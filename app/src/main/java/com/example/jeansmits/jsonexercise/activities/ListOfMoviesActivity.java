@@ -94,6 +94,9 @@ public class ListOfMoviesActivity extends AppCompatActivity implements View.OnCl
         } else if (id == R.id.take_photos) {
             Intent intent = new Intent(this, TakePhotosActivity.class);
             startActivity(intent);
+        } else if (id == R.id.database_exercise) {
+            Intent intent = new Intent(this, SaveInDatabaseActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

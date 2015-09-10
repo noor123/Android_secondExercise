@@ -1,5 +1,6 @@
 package com.example.jeansmits.jsonexercise.activities;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
@@ -28,6 +29,7 @@ public class TakePhotosActivity extends AppCompatActivity implements View.OnClic
     File fileWithPhoto;
     Button deletePhoto;
     Button gotoListPhotos;
+    AlertDialog.Builder dlgAlert;
                     // Op andere pagina drop-down box met images en dan één image eronder.
     private static final String TAG = "MyActivity";
 
@@ -36,6 +38,7 @@ public class TakePhotosActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.take_photos);
 
+        dlgAlert  = new AlertDialog.Builder(this);
         takePhoto = (Button) findViewById(R.id.take_photo);
         takePhoto.setOnClickListener(this);
         deletePhoto = (Button) findViewById(R.id.delete_photo);
@@ -74,6 +77,9 @@ public class TakePhotosActivity extends AppCompatActivity implements View.OnClic
         } else if (id == R.id.save_something) {
             Intent intent = new Intent(this, SaveSomethingActivity.class);
             startActivity(intent);
+        } else if (id == R.id.database_exercise) {
+            Intent intent = new Intent(this, SaveInDatabaseActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -90,12 +96,27 @@ public class TakePhotosActivity extends AppCompatActivity implements View.OnClic
             ImageView showPhoto = (ImageView) findViewById(R.id.photo);
             showPhoto.setVisibility(View.INVISIBLE);
             deletePhoto.setVisibility(View.INVISIBLE);
+            namePhoto.setVisibility(View.INVISIBLE);
+            savePhoto.setVisibility(View.INVISIBLE);
+            dlgAlert.setMessage("This photo is deleted");
+            dlgAlert.show();
         } else if (v == gotoListPhotos) {
             Intent intent = new Intent(this, ListOfPicturesActivity.class);
             startActivity(intent);
         } else if (v == savePhoto) {
-            File f = new File(fileDirectory, namePhoto.getText().toString() + ".jpg");
-            fileWithPhoto.renameTo(f);
+            String name = namePhoto.getText().toString();
+            if (name.equals("")) {
+                dlgAlert.setMessage("Please fill in a name");
+                dlgAlert.show();
+            } else {
+                File f = new File(fileDirectory, name + ".jpg");
+                fileWithPhoto.renameTo(f);
+                deletePhoto.setVisibility(View.INVISIBLE);
+                namePhoto.setVisibility(View.INVISIBLE);
+                savePhoto.setVisibility(View.INVISIBLE);
+                dlgAlert.setMessage("This photo is saved");
+                dlgAlert.show();
+            }
         }
 
     }

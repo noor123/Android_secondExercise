@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="SAVE a person in the database"
+        android:gravity="center"
+        android:background="@color/green"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:weightSum="90">
+
+        <EditText
+            android:id="@+id/give_in_firstname"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:hint="Firstname?"/>
+
+        <EditText
+            android:id="@+id/give_in_lastname"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:hint="Lastname?"/>
+
+        <EditText
+            android:id="@+id/give_in_favorite_number"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:hint="Favorite number?"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/save_in_database"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Save"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="SEARCH a person in the database"
+        android:layout_marginTop="30dp"
+        android:background="@color/green"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <EditText
+            android:id="@+id/id_to_search_for"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:hint="Give in an id"/>
+
+        <Button
+            android:id="@+id/do_a_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="70"
+            android:text="Search on id"/>
+
+    </LinearLayout>
+
+        <TextView
+            android:id="@+id/show_firstname"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/show_lastname"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/show_favorite_number"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+
+
+</LinearLayout>
