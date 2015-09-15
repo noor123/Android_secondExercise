@@ -133,6 +133,9 @@ public class ListOfPicturesActivity extends AppCompatActivity implements Adapter
         } else if (id == R.id.fragments_exercise) {
             Intent intent = new Intent(this, ExerciseOnFragmentsActivity.class);
             startActivity(intent);
+        } else if (id == R.id.drawer_exercise) {
+            Intent intent = new Intent(this, ExerciseOnDrawerActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
 

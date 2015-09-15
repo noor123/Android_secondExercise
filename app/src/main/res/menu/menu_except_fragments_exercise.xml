@@ -9,4 +9,6 @@
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/database_exercise" android:title="Database exercise"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/drawer_exercise" android:title="Drawer exercise"
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>

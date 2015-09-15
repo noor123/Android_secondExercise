@@ -76,6 +76,9 @@ public class ExerciseOnFragmentsActivity extends AppCompatActivity {
         } else if (id == R.id.database_exercise) {
             Intent intent = new Intent(this, SaveInDatabaseActivity.class);
             startActivity(intent);
+        } else if (id == R.id.drawer_exercise) {
+            Intent intent = new Intent(this, ExerciseOnDrawerActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

@@ -44,6 +44,10 @@
             android:name=".activities.ExerciseOnFragmentsActivity"
             android:label="JsonExercise" >
         </activity>
+        <activity
+            android:name=".activities.ExerciseOnDrawerActivity"
+            android:label="JsonExercise" >
+        </activity>
     </application>
 
 </manifest>

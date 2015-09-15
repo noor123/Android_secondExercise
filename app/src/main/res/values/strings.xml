@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">JsonExercise</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <array name="string_array"><item name="item_1">one...</item>,<item name="item_2">two...</item><item name="item_3">three...</item>
+        <item name="item_4">four...</item><item name="item_5">five...</item><item name="item_6">six...</item><item name="item_7">seven...</item>
+        <item name="item_8">eight...</item><item name="item_9">nine...</item><item name="item_10">ten...</item></array>
 </resources>
