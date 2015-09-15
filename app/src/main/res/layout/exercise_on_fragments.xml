@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:weightSum="100">
+
+    <LinearLayout
+        android:layout_weight="10"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="90">
+
+        <Button
+            android:id="@+id/show_fragment_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:text="Show fragment 1"
+            android:onClick="selectFragment"/>
+        <!--Bij het klikken, roept het de selectFragment functie aan-->
+
+        <Button
+            android:id="@+id/show_fragment_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:text="Show fragment 2"
+            android:onClick="selectFragment"/>
+
+        <Button
+            android:id="@+id/show_fragment_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:text="Show fragment 3"
+            android:onClick="selectFragment"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_weight="40"
+        android:name="com.example.jeansmits.jsonexercise.activities.Fragment_1"
+        android:id="@+id/place_for_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+
+    <android.support.v4.view.ViewPager
+        android:layout_weight="50"
+        android:id="@+id/place_for_fragment_2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/pager_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp" />
+
+    </android.support.v4.view.ViewPager>
+
+
+</LinearLayout>

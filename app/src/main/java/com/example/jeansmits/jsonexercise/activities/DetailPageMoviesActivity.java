@@ -64,6 +64,9 @@ public class DetailPageMoviesActivity extends AppCompatActivity {
         } else if (id == R.id.database_exercise) {
             Intent intent = new Intent(this, SaveInDatabaseActivity.class);
             startActivity(intent);
+        } else if (id == R.id.fragments_exercise) {
+            Intent intent = new Intent(this, ExerciseOnFragmentsActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

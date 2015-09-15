@@ -63,6 +63,9 @@ public class SaveInDatabaseActivity extends AppCompatActivity implements View.On
         } else if (id == R.id.take_photos) {
             Intent intent = new Intent(this, TakePhotosActivity.class);
             startActivity(intent);
+        } else if (id == R.id.fragments_exercise) {
+            Intent intent = new Intent(this, ExerciseOnFragmentsActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
 

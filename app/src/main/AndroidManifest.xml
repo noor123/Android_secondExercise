@@ -40,6 +40,10 @@
             android:name=".activities.SaveInDatabaseActivity"
             android:label="JsonExercise" >
         </activity>
+        <activity
+            android:name=".activities.ExerciseOnFragmentsActivity"
+            android:label="JsonExercise" >
+        </activity>
     </application>
 
 </manifest>

@@ -7,4 +7,6 @@
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/database_exercise" android:title="Database exercise"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/fragments_exercise" android:title="Fragments exercise"
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>
