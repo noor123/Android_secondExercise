@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".JsonExercise">
+    <item android:id="@+id/overview_movies" android:title="All movies"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/save_something" android:title="SharedPreferences functionality"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/take_photos" android:title="Take photo's"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/database_exercise" android:title="Database exercise"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/fragments_exercise" android:title="Fragments exercise"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/drawer_exercise" android:title="Drawer exercise"
+        android:orderInCategory="100" app:showAsAction="never" />
+</menu>

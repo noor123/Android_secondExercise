@@ -21,8 +21,24 @@
             android:layout_height="60dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="100dp"
             android:text="Hey you, there is something hidden on your left."
             android:textSize="12dp"/>
+        
+        <Button
+            android:id="@+id/let_rotate"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Let image rotate"/>
+
+        <ImageView
+            android:id="@+id/image_that_should_rotate"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/image_to_rotate"/>
+        
+        
 
 
     </LinearLayout>

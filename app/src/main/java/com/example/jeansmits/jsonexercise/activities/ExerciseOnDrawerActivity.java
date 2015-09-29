@@ -6,12 +6,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.jeansmits.jsonexercise.R;
 
-public class ExerciseOnDrawerActivity extends AppCompatActivity {
+public class ExerciseOnDrawerActivity extends ClassWithMenu implements View.OnClickListener {
+    Button letRotate;
+    ImageView imageToRotate;
     private ListView myDrawerList;
     private ArrayAdapter<String> myAdapter;
     private String[] myItems;
@@ -20,6 +27,10 @@ public class ExerciseOnDrawerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exercise_on_drawer);
+
+        letRotate = (Button) findViewById(R.id.let_rotate);
+        letRotate.setOnClickListener(this);
+        imageToRotate = (ImageView) findViewById(R.id.image_that_should_rotate);
 
         /* Get the array in the map "res", document "colors.xml" */
         myItems = getResources().getStringArray(R.array.string_array);
@@ -43,30 +54,10 @@ public class ExerciseOnDrawerActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onClick(View v) {
+        Animation myRotateAnimation = AnimationUtils.loadAnimation(ExerciseOnDrawerActivity.this, R.anim.rotate);
+        myRotateAnimation.setRepeatCount(5);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.overview_movies) {
-            Intent intent = new Intent(this, ListOfMoviesActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.save_something) {
-            Intent intent = new Intent(this, SaveSomethingActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.take_photos) {
-            Intent intent = new Intent(this, TakePhotosActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.database_exercise) {
-            Intent intent = new Intent(this, SaveInDatabaseActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.fragments_exercise) {
-            Intent intent = new Intent(this, ExerciseOnFragmentsActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
+        imageToRotate.startAnimation(myRotateAnimation);
     }
-
 }

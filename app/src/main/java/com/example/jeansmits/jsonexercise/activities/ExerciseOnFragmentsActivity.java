@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 
 import com.example.jeansmits.jsonexercise.R;
 
-public class ExerciseOnFragmentsActivity extends AppCompatActivity {
+public class ExerciseOnFragmentsActivity extends ClassWithMenu {
     FragmentPagerAdapter adapterViewPager;
 
     @Override
@@ -27,6 +27,13 @@ public class ExerciseOnFragmentsActivity extends AppCompatActivity {
         ViewPager vpPager = (ViewPager) findViewById(R.id.place_for_fragment_2);
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
+
+        Fragment fragment = new Fragment_1();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        fragmentTransaction.replace(R.id.place_for_fragment, fragment);
+        fragmentTransaction.commit();
 
     }
 
@@ -54,33 +61,6 @@ public class ExerciseOnFragmentsActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_except_fragments_exercise, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.overview_movies) {
-            Intent intent = new Intent(this, ListOfMoviesActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.save_something) {
-            Intent intent = new Intent(this, SaveSomethingActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.take_photos) {
-            Intent intent = new Intent(this, TakePhotosActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.database_exercise) {
-            Intent intent = new Intent(this, SaveInDatabaseActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.drawer_exercise) {
-            Intent intent = new Intent(this, ExerciseOnDrawerActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {

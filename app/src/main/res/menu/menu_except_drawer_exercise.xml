@@ -11,4 +11,6 @@
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/fragments_exercise" android:title="Fragments exercise"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/camera_exercise" android:title="Camera exercise"
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>

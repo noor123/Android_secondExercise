@@ -25,7 +25,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListOfPicturesActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
+public class ListOfPicturesActivity extends ClassWithMenu implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     private static final String TAG = "MyActivity";
     private Spinner spinnerWithPictures;
     File[] listOfFiles;
@@ -113,33 +113,6 @@ public class ListOfPicturesActivity extends AppCompatActivity implements Adapter
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.overview_movies) {
-            Intent intent = new Intent(this, ListOfMoviesActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.save_something) {
-            Intent intent = new Intent(this, SaveSomethingActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.database_exercise) {
-            Intent intent = new Intent(this, SaveInDatabaseActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.fragments_exercise) {
-            Intent intent = new Intent(this, ExerciseOnFragmentsActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.drawer_exercise) {
-            Intent intent = new Intent(this, ExerciseOnDrawerActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-
-    }
 
     @Override
     public void onClick(View v) {

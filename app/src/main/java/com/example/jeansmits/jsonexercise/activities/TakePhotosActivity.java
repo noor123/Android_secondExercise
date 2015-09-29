@@ -21,7 +21,10 @@ import android.widget.Toast;
 
 import java.io.File;
 
-public class TakePhotosActivity extends AppCompatActivity implements View.OnClickListener {
+public class TakePhotosActivity extends ClassWithMenu implements View.OnClickListener {
+    // In ExerciseOnCameraActivity, we directly accessed the device hardware and use the camera.
+    // In this class, we use the existing camera app.
+
     File fileDirectory;
     Button takePhoto;
     EditText namePhoto;
@@ -64,33 +67,6 @@ public class TakePhotosActivity extends AppCompatActivity implements View.OnClic
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.overview_movies) {
-            Intent intent = new Intent(this, ListOfMoviesActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.save_something) {
-            Intent intent = new Intent(this, SaveSomethingActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.database_exercise) {
-            Intent intent = new Intent(this, SaveInDatabaseActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.fragments_exercise) {
-            Intent intent = new Intent(this, ExerciseOnFragmentsActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.drawer_exercise) {
-            Intent intent = new Intent(this, ExerciseOnDrawerActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onClick(View v) {
         if (v == takePhoto) {
             Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -104,6 +80,7 @@ public class TakePhotosActivity extends AppCompatActivity implements View.OnClic
             deletePhoto.setVisibility(View.INVISIBLE);
             namePhoto.setVisibility(View.INVISIBLE);
             savePhoto.setVisibility(View.INVISIBLE);
+            takePhoto.setText("Take a picture");
             dlgAlert.setMessage("This photo is deleted");
             dlgAlert.show();
         } else if (v == gotoListPhotos) {

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.example.jeansmits.jsonexercise.R;
 import com.example.jeansmits.jsonexercise.models.Movie;
 
-public class DetailPageMoviesActivity extends AppCompatActivity {
+public class DetailPageMoviesActivity extends ClassWithMenu {
     Movie movie;
 
     @Override
@@ -36,42 +36,11 @@ public class DetailPageMoviesActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_all, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.overview_movies) {
-            Intent intent = new Intent(this, ListOfMoviesActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.save_something) {
-            Intent intent = new Intent(this, SaveSomethingActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.take_photos) {
-            Intent intent = new Intent(this, TakePhotosActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.database_exercise) {
-            Intent intent = new Intent(this, SaveInDatabaseActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.fragments_exercise) {
-            Intent intent = new Intent(this, ExerciseOnFragmentsActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.drawer_exercise) {
-            Intent intent = new Intent(this, ExerciseOnDrawerActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 
